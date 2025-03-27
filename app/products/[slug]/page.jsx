@@ -1,12 +1,25 @@
 import HeroSection from '@/components/HeroSection';
-import { product } from '@/libs/product';
 import Image from 'next/image';
 import { ShoppingCart } from 'lucide-react';
-import React from 'react';
+
+const getProductBySlug = async (slug) => {
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products/${slug}`, { cache: 'no-store' });
+
+        if (!res.ok) {
+            throw new Error('Failed to fetch product');
+        }
+
+        return res.json();
+    } catch (error) {
+        console.error('Error fetching product:', error);
+        return null;
+    }
+};
 
 const SingleProduct = async ({ params }) => {
-    const { id } = await params;
-    const productData = product.find((item) => item.id.toString() === id);
+    const { slug } = await params;
+    const productData = await getProductBySlug(slug);
 
     if (!productData) {
         return <div className="text-center text-red-500 text-xl mt-10">Product Not Found</div>;
@@ -22,11 +35,12 @@ const SingleProduct = async ({ params }) => {
             <section className="grid md:grid-cols-2 gap-10 mt-6 items-center">
                 <div className="flex justify-center md:justify-start">
                     <Image
-                        src={productData.imgUrl}
-                        alt={productData.imgAlt}
+                        src={productData.imageUrl}
+                        alt={productData.productName}
                         width={400}
                         height={400}
                         className="rounded-lg shadow-lg object-cover w-full max-w-[400px]"
+                        priority
                     />
                 </div>
 
@@ -38,14 +52,14 @@ const SingleProduct = async ({ params }) => {
 
                     <div className="flex items-center gap-4">
                         <p className="text-2xl font-bold text-blue-500">${productData.price}</p>
-                        <span className="text-sm bg-emerald-100 text-emerald-600 px-3 py-1 rounded-full">
-                            {productData.promo}
-                        </span>
+                        {productData.promo && (
+                            <span className="text-sm bg-emerald-100 text-emerald-600 px-3 py-1 rounded-full">
+                                {productData.promo}
+                            </span>
+                        )}
                     </div>
 
-                    <p className="text-gray-700">
-                        This premium {productData.brand} product is crafted with the best materials to ensure comfort and durability. Perfect for any occasion!
-                    </p>
+                    <p className="text-gray-700">{productData.description}</p>
 
                     <div className="flex gap-4 mt-4">
                         <button className="bg-blue-600 text-white py-2 px-6 rounded-lg text-lg font-semibold hover:bg-blue-700 transition">

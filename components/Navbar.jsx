@@ -13,7 +13,7 @@ const Navbar = () => {
                 <Link href={'/checkout'}>Checkout</Link>
             </div>
             <div className="btn">
-                <button className='px-4 py-2 rounded-full bg-blue-500 text-white'><Link href={'/dashboard'}>Dashboard</Link></button>
+                <button className='px-4 py-2 rounded-full bg-blue-500 hover:bg-blue-600 text-white'><Link href={'/dashboard'}>Dashboard</Link></button>
             </div>
         </div>
     )
