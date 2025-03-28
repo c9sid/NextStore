@@ -3,7 +3,7 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export async function GET(req, { params }) {
-    const { slug } = params;
+    const { slug } = await params;
 
     try {
         const product = await prisma.product.findUnique({
