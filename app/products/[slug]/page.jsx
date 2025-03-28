@@ -1,4 +1,3 @@
-import HeroSection from '@/components/HeroSection';
 import Image from 'next/image';
 import { ShoppingCart } from 'lucide-react';
 
@@ -28,9 +27,9 @@ const SingleProduct = async ({ params }) => {
     return (
         <div>
             {/* Hero Section */}
-            <section>
+            {/* <section>
                 <HeroSection pageName={productData.productName} />
-            </section>
+            </section> */}
 
             <section className="grid md:grid-cols-2 gap-10 mt-6 items-center">
                 <div className="flex justify-center md:justify-start">
