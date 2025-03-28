@@ -62,10 +62,10 @@ const SingleProduct = async ({ params }) => {
                     <p className="text-gray-700">{productData.description}</p>
 
                     <div className="flex gap-4 mt-4">
-                        <button className="bg-blue-600 text-white py-2 px-6 rounded-lg text-lg font-semibold hover:bg-blue-700 transition">
+                        <button className="bg-blue-600 text-white py-2 px-6 rounded-lg text-lg font-semibold hover:bg-blue-700 transition cursor-pointer">
                             Buy Now
                         </button>
-                        <button className="bg-gray-100 text-gray-800 py-2 px-6 rounded-lg flex items-center gap-2 hover:bg-gray-200 transition">
+                        <button className="bg-gray-100 text-gray-800 py-2 px-6 rounded-lg flex items-center gap-2 hover:bg-gray-200 transition cursor-pointer">
                             <ShoppingCart className="w-5 h-5" /> Add to Cart
                         </button>
                     </div>
