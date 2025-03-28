@@ -24,7 +24,6 @@ const ProductCard = ({ product }) => {
                     <h2 className='font-semibold group-hover:underline'>{product.productName}</h2>
                 </Link>
                 <p className='text-sm text-gray-500'>Category: {product.category}</p>
-                <p className='text-sm text-gray-700'>{product.description}</p>
                 <p className={`text-sm ${product.stock > 0 ? "text-green-600" : "text-red-600"}`}>
                     {product.stock > 0 ? `In Stock (${product.stock})` : "Out of Stock"}
                 </p>
