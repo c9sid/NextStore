@@ -7,6 +7,9 @@ const Cart = () => {
             <section>
                 <HeroSection pageName={"Cart"} />
             </section>
+            <section>
+                <div className='text-center'><h2>Comming soon...</h2></div>
+            </section>
         </div>
     )
 }
