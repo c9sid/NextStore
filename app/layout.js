@@ -23,10 +23,10 @@ export default function RootLayout({ children }) {
     <ClerkProvider afterSignOutUrl={process.env.NEXT_PUBLIC_URL}>
       <html lang="en">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          className={`${geistSans.variable} ${geistMono.variable}`}
         >
           <Navbar />
-          <main className="container mx-auto px-5">
+          <main>
             {children}
           </main>
         </body>
